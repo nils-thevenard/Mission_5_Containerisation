@@ -13,7 +13,7 @@ function App() {
     const fetchData = async () => {
       try {
         // Send a GET request to the specified endpoint
-        const response = await fetch("http://localhost:8000/test");
+        const response = await fetch("http://localhost:8000/house");
 
         // Parse the JSON data from the response
         const data = await response.json();
@@ -41,9 +41,10 @@ function App() {
         // Display a loading message while data is being fetched
         <p>Loading...</p>
       ) : (
-        // Display the fetched data as a JSON-formatted string
         <div>
-          <p>{JSON.stringify(backendData.text)}</p>
+          {/* For example, if backendData is an array, you can map through it */}
+          {backendData &&
+            backendData.map((item) => <p key={item.id}>{item.carType}</p>)}
         </div>
       )}
     </div>
