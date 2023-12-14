@@ -1,0 +1,31 @@
+version: "3"
+services:
+  frontend:
+    image: m5frontend
+    stdin_open: true
+    ports:
+      - "5173:5173"
+    networks:
+      - mern-app
+  backend:
+    image: m5backend
+    ports:
+      - "8000:8000"
+    networks:
+      - mern-app
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - mern-app
+    volumes:
+      - mongo-data:/data/db
+networks:
+  mern-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local

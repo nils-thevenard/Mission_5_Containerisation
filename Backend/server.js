@@ -14,7 +14,7 @@ const port = 8000;
 // Applying the CORS middleware to allow cross-origin requests
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/mission5");
+mongoose.connect("mongodb://mongo:27017/mission5");
 
 const houseSchema = new mongoose.Schema({
   name: String,
